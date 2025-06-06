@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "753280532383",
+    "project_id": "lagoonapp-angouleme",
+    "storage_bucket": "lagoonapp-angouleme.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:753280532383:android:9f78d26d9a2a882f4847aa",
+        "android_client_info": {
+          "package_name": "com.lagoon.app.lagoon_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQRSklLo1DmG1PcpdKZ0r3CaPPvK4WiNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
