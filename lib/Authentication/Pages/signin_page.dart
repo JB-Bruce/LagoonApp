@@ -2,28 +2,36 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lagoon_app/Authentication/Pages/signin_page.dart';
 import 'package:lagoon_app/Authentication/Widgets/InputField.dart';
 import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SigninPage extends StatefulWidget {
+  const SigninPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SigninPage> createState() => _SigninPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SigninPageState extends State<SigninPage> {
   final emailController = TextEditingController();
   final mdpController = TextEditingController();
+  final mdpConfirmationController = TextEditingController();
 
   String errorMsg = '';
 
-  void login() async {
+  void signin() async {
+
+    if(mdpController.text != mdpConfirmationController.text){
+      setState(() {
+        errorMsg = 'Les mots de passe sont différents';
+      });
+      return;
+    }
+
     try {
-      await authService.value.signIn(email: emailController.text, password: mdpController.text);
+      await authService.value.createAccount(email: emailController.text, password: mdpController.text);
     } on FirebaseAuthException catch(e){
       setState(() {
         errorMsg = e.message ?? 'error';
@@ -59,12 +67,12 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(height: 130),
 
             Text(
-              'Connexion',
+              'Inscription',
               style: TextStyle(
-                color: AppPallette.textColor1,
-                fontSize: 35,
-                fontWeight: FontWeight.w900,
-                fontFamily: ''
+                  color: AppPallette.textColor1,
+                  fontSize: 35,
+                  fontWeight: FontWeight.w900,
+                  fontFamily: ''
               ),
             ),
 
@@ -92,28 +100,19 @@ class _LoginPageState extends State<LoginPage> {
               icon: Icons.lock,
             ),
 
-            SizedBox(height: 10),
+            SizedBox(height: 20),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: ()=>{},
-                    child: Text('Mot de passe oublié ?',
-                      style: TextStyle(
-                        color: AppPallette.textColor2,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            InputField(
+              controller: mdpConfirmationController,
+              hintText: 'confirmation',
+              obscureText: true,
+              icon: Icons.lock,
             ),
 
-            SizedBox(height: 30),
 
-            ValidateButton(text: 'Connexion', event: login),
+            SizedBox(height: 40),
+
+            ValidateButton(text: 'Inscription', event: signin),
 
             SizedBox(height: 10),
 
@@ -123,22 +122,22 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 10),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               spacing: 0.0,
               children: [
-                Text('Pas de compte ?' ,
+                Text('Déjà un compte ?' ,
                   style: TextStyle(
                     color: AppPallette.textColor2,
                   ),
                 ),
                 TextButton(
                   onPressed: ()=>{
-                    Navigator.pushNamed(context, '/signin')
+                    Navigator.pushNamed(context, '/login')
                   },
-                  child: Text("Créer un compte",
+                  child: Text("Se connecter",
                     style: TextStyle(
                       color: AppPallette.gradiant1,
                     ),
