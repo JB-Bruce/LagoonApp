@@ -32,11 +32,19 @@ class _SigninPageState extends State<SigninPage> {
 
     try {
       await authService.value.createAccount(email: emailController.text, password: mdpController.text);
+      await authService.value.signIn(email: emailController.text, password: mdpController.text);
+      authService.value.sendEmail();
+      popPage();
     } on FirebaseAuthException catch(e){
       setState(() {
         errorMsg = e.message ?? 'error';
       });
     }
+  }
+
+  void popPage(){
+    authService.value.tempString = mdpController.text;
+    Navigator.pop(context);
   }
 
   @override

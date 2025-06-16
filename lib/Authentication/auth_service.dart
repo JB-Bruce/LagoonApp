@@ -10,12 +10,26 @@ class AuthService {
 
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
+  String? tempString;
+
   Future<UserCredential> signIn({required String email, required String password,}) async {
     return await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
+
+  Future<UserCredential> reSignIn({required String password,}) async {
+    String email = currentUser!.email!;
+
+    signOut();
+
+    return await firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
+
 
   Future<UserCredential> createAccount({required String email, required String password,}) async {
     return await firebaseAuth.createUserWithEmailAndPassword(
@@ -26,6 +40,10 @@ class AuthService {
 
   Future<void> signOut() async {
     await firebaseAuth.signOut();
+  }
+
+  Future<void> sendEmail() async {
+    await currentUser!.sendEmailVerification();
   }
 
   Future<void> resetPassword({required String email,}) async {

@@ -31,12 +31,20 @@ class ValidateButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15)
           ),
           child: Center(
-            child: Text(text,
-              style: TextStyle(
-                color: AppPallette.textColor1,
-                fontWeight: FontWeight.w800,
-                fontSize: 18,
-              ),
+            child: Stack(
+              children: [
+                if(icon != null) Row(children: [Icon(icon!),],),
+
+                Center(
+                  child: Text(text,
+                    style: TextStyle(
+                      color: AppPallette.textColor1,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:lagoon_app/Authentication/Pages/email_sent_page.dart';
+import 'package:lagoon_app/Authentication/Pages/loading_page.dart';
+import 'package:lagoon_app/Authentication/auth_service.dart';
+import 'package:lagoon_app/Main/home_page.dart';
 import 'firebase_options.dart';
 
 import 'Authentication/Pages/login_page.dart';
@@ -22,7 +26,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: ValueListenableBuilder(
+        valueListenable: authService,
+        builder: (context, authService, child) {
+          return StreamBuilder(
+            stream: authService.authStateChanges,
+            builder: (context, snapshot) {
+              Widget widget;
+
+              if(snapshot.connectionState == ConnectionState.waiting){
+                widget = LoadingPage();
+              } else if(snapshot.hasData){
+                if(snapshot.data!.emailVerified){
+                  widget = const HomePage();
+                }else{
+                  widget = const EmailSentPage();
+                }
+              }else{
+                widget = LoginPage();
+              }
+
+              return widget;
+            },
+          );
+        },
+      ),
       theme: ThemeData.dark(),
       routes: {
         '/signin': (context) => SigninPage(),
