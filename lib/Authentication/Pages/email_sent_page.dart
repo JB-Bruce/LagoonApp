@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
-import 'package:lagoon_app/Main/home_page.dart';
+import 'package:lagoon_app/Main/pages/home_page.dart';
 
 class EmailSentPage extends StatefulWidget {
   const EmailSentPage({super.key});
