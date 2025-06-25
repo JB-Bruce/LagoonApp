@@ -5,11 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/Widgets/input_field_account_widget.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
+import 'package:lagoon_app/Main/user_service.dart';
 
-class AccountWidget extends StatelessWidget {
-  const AccountWidget({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
+  @override
+  State<AccountPage> createState() => _AccountPageState();
+}
 
+class _AccountPageState extends State<AccountPage> {
+
+  final emailController = TextEditingController();
+  final nameController = TextEditingController();
+
+  void save(){
+    userService.value.saveUserData(authService.value.currentUser!.uid, nameController.text ?? '');
+  }
 
   void logout() async {
     try{
@@ -19,12 +31,25 @@ class AccountWidget extends StatelessWidget {
     }
   }
 
+  void setName() async{
+    String? s = await userService.value.loadUserFirstName(authService.value.currentUser!.uid);
+    log(s ?? 'no string');
+    log(authService.value.currentUser!.uid);
+    setState(() {
+      nameController.text = s ?? '';
+    });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    setName();
+  }
 
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final nameController = TextEditingController();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -90,9 +115,14 @@ class AccountWidget extends StatelessWidget {
 
           const SizedBox(height: 50),
 
+          ElevatedButton(onPressed: save, child:
+            Text('Save',
+
+            ),
+          ),
           //InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
 
-          const SizedBox(height: 140),
+          const SizedBox(height: 100),
 
           TextButton(
             onPressed: logout,

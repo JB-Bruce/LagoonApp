@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
 
   final Set<Widget> pages = {
     HomeWidget(),
-    AccountWidget(),
+    AccountPage(),
     SettingsWidget()
   };
 

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -17,6 +20,29 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
+
+  testFirestoreConnection();
+
+  await Future.delayed(Duration(seconds: 1));
+
+  testFirestoreConnection();
+}
+
+void testFirestoreConnection() async {
+  try {
+    final doc = await FirebaseFirestore.instance
+        .collection('test')
+        .doc('ping')
+        .get();
+
+    if (doc.exists) {
+      log("✅ Document exists: ${doc.data()}");
+    } else {
+      log("ℹ️ Document does not exist.");
+    }
+  } catch (e) {
+    log("❌ Firestore error: $e");
+  }
 }
 
 class MyApp extends StatelessWidget {
