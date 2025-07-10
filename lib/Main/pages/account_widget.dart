@@ -32,7 +32,7 @@ class _AccountPageState extends State<AccountPage> {
   }
 
   void setName() async{
-    String? s = await userService.value.loadUserFirstName(authService.value.currentUser!.uid);
+    String? s = userService.value.name;
     log(s ?? 'no string');
     log(authService.value.currentUser!.uid);
     setState(() {
@@ -51,90 +51,101 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        children: [
-
-          const SizedBox(height: 50),
-
-          Text(
-            'Compte',
-            style: TextStyle(
-              color: AppPallette.textColor1,
-              fontWeight: FontWeight.w800,
-              fontSize: 35
-            ),
-          ),
-
-          const SizedBox(height: 80),
-
-          Row(
-            children: [
-              Text('Informations personnelles',
-                style: TextStyle(
-                  color: AppPallette.textColor1,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20
-                ),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: [
+      
+            const SizedBox(height: 50),
+      
+            Text(
+              'Compte',
+              style: TextStyle(
+                color: AppPallette.textColor1,
+                fontWeight: FontWeight.w800,
+                fontSize: 35
               ),
-            ],
-          ),
-
-          Divider(
-            color: AppPallette.borderColor4,
-            thickness: 2,
-          ),
-
-          const SizedBox(height: 30),
-
-          InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
-
-          const SizedBox(height: 30),
-
-          InputFieldAccountWidget(title: 'Nom', hint: 'Nom', controller: nameController, editable: true, icon: Icons.person_outline,),
-
-          const SizedBox(height: 80),
-
-          Row(
-            children: [
-              Text('Mot de passe',
-                style: TextStyle(
+            ),
+      
+            const SizedBox(height: 80),
+      
+            Row(
+              children: [
+                Text('Informations personnelles',
+                  style: TextStyle(
                     color: AppPallette.textColor1,
                     fontWeight: FontWeight.w600,
                     fontSize: 20
+                  ),
+                ),
+              ],
+            ),
+      
+            Divider(
+              color: AppPallette.borderColor4,
+              thickness: 2,
+            ),
+      
+            const SizedBox(height: 30),
+      
+            InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
+      
+            const SizedBox(height: 30),
+      
+            InputFieldAccountWidget(title: 'Nom', hint: 'Nom', controller: nameController, editable: true, icon: Icons.person_outline,),
+      
+            const SizedBox(height: 80),
+      
+            Row(
+              children: [
+                Text('Mot de passe',
+                  style: TextStyle(
+                      color: AppPallette.textColor1,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20
+                  ),
+                ),
+              ],
+            ),
+      
+            Divider(
+              color: AppPallette.borderColor4,
+              thickness: 2,
+            ),
+      
+            const SizedBox(height: 50),
+      
+            /*ElevatedButton(onPressed: save, child:
+              Text('Save',
+      
+              ),
+            ),*/
+      
+            //InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
+      
+            Text('Non disponible',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w600,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+      
+            const SizedBox(height: 80),
+      
+            TextButton(
+              onPressed: logout,
+              child: Text(
+                'Deconnexion',
+                style: TextStyle(
+                  color: AppPallette.errorColor2,
                 ),
               ),
-            ],
-          ),
-
-          Divider(
-            color: AppPallette.borderColor4,
-            thickness: 2,
-          ),
-
-          const SizedBox(height: 50),
-
-          ElevatedButton(onPressed: save, child:
-            Text('Save',
-
             ),
-          ),
-          //InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
-
-          const SizedBox(height: 100),
-
-          TextButton(
-            onPressed: logout,
-            child: Text(
-              'Deconnexion',
-              style: TextStyle(
-                color: AppPallette.errorColor2,
-              ),
-            ),
-          ),
-
-        ],
+      
+          ],
+        ),
       ),
     );
   }

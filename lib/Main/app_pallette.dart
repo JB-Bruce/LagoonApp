@@ -7,6 +7,7 @@ class AppPallette
   static final Color backgroundColor3 = Color.fromARGB(255, 25, 25, 35);
   static final Color gradiant1 = Colors.blue[500]!;
   static final Color gradiant2 = Colors.blue[300]!;
+  static final Color gradiant3 = Colors.blue[800]!;
   static final Color borderColor = Colors.grey[500]!;
   static final Color borderColor2 = Colors.grey[700]!;
   static final Color borderColor3 = Colors.grey[600]!;
