@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/Widgets/input_field_account_widget.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
@@ -19,8 +20,34 @@ class _AccountPageState extends State<AccountPage> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
 
-  void save(){
-    userService.value.saveUserData(authService.value.currentUser!.uid, nameController.text ?? '');
+  bool changed = false;
+
+  void save() async{
+    await userService.value.saveUserData(authService.value.currentUser!.uid, nameController.text ?? '');
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(Icons.check, color: AppPallette.textColor1, size: 20,),
+
+            SizedBox(width: 20),
+
+            Text("Informations enregistrées",
+              style: TextStyle(
+                color: AppPallette.textColor1,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: AppPallette.gradiant3,
+      ),
+    );
+
+    setState(() {
+      changed = false;
+    });
   }
 
   void logout() async {
@@ -37,6 +64,12 @@ class _AccountPageState extends State<AccountPage> {
     log(authService.value.currentUser!.uid);
     setState(() {
       nameController.text = s ?? '';
+    });
+  }
+  
+  void setChanged(bool change){
+    setState(() {
+      changed = change;
     });
   }
 
@@ -68,7 +101,7 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
       
-            const SizedBox(height: 80),
+            const SizedBox(height: 70),
       
             Row(
               children: [
@@ -93,9 +126,9 @@ class _AccountPageState extends State<AccountPage> {
       
             const SizedBox(height: 30),
       
-            InputFieldAccountWidget(title: 'Nom', hint: 'Nom', controller: nameController, editable: true, icon: Icons.person_outline,),
+            InputFieldAccountWidget(title: 'Nom', hint: 'Nom', changedFunc: (String)=>{setChanged(true)}, controller: nameController, editable: true, icon: Icons.person_outline,),
       
-            const SizedBox(height: 80),
+            const SizedBox(height: 60),
       
             Row(
               children: [
@@ -121,6 +154,8 @@ class _AccountPageState extends State<AccountPage> {
       
               ),
             ),*/
+
+
       
             //InputFieldAccountWidget(title: 'Email', hint: authService.value.currentUser?.email ?? 'error in email', controller: emailController, editable: false, icon: Icons.mail_outline,),
       
@@ -132,8 +167,42 @@ class _AccountPageState extends State<AccountPage> {
               ),
             ),
       
-            const SizedBox(height: 80),
-      
+            const SizedBox(height: 60),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 75),
+              child: InkWell(
+                onTap: changed ? save : null,
+                borderRadius: BorderRadius.circular(15),
+                focusColor: AppPallette.gradiant2,
+                child: Ink(
+                  padding: const EdgeInsets.all(12),
+                  //margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: changed ? AppPallette.gradiant1 : AppPallette.borderColor2,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Center(
+                    child: Stack(
+                      children: [
+                        Center(
+                          child: Text('Sauvegarder',
+                            style: TextStyle(
+                              color: AppPallette.textColor1,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 5),
+
             TextButton(
               onPressed: logout,
               child: Text(

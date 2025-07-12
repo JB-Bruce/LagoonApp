@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
+import 'package:lagoon_app/Main/pages/player_list_view.dart';
 
 class AdminWidget extends StatefulWidget {
   const AdminWidget({super.key});
@@ -13,6 +16,8 @@ class AdminWidget extends StatefulWidget {
 class _AdminWidgetState extends State<AdminWidget> {
   final durationController = TextEditingController();
   final repetitionController = TextEditingController();
+
+  bool isHovering = false;
 
   @override
   Widget build(BuildContext context) {
@@ -263,7 +268,29 @@ class _AdminWidgetState extends State<AdminWidget> {
             ),
           ),
 
-          const SizedBox(height: 25),
+          const SizedBox(height: 10),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => PlayerListView())),
+                onHover: (bool) => log('eee'),
+                child: Text('Voir les inscrits',
+                  style: TextStyle(
+                    color: AppPallette.gradiant1,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppPallette.gradiant1,
+                  ),
+                ),
+              ),
+
+              Icon(Icons.search, color: AppPallette.gradiant1, size: 20),
+            ],
+          ),
+
+          const SizedBox(height: 10),
 
           Divider(
             color: AppPallette.borderColor2,

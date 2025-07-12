@@ -193,7 +193,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
               final barcode = capture.barcodes.first;
               final String? code = barcode.rawValue;
 
-              if (code != null) {
+              if (code != null && code == 'lagoon-game-participation-01') {
                 _handleScan(code);
               }
             },
@@ -205,7 +205,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
               left: 30,
               child: ElevatedButton(
                 onPressed: () {
-                  final fakeQr = "bar123";
+                  final fakeQr = "lagoon-game-participation-01";
                   _handleScan(fakeQr);
                 },
                 child: Text("Test QR"),

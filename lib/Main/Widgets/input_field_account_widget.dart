@@ -8,6 +8,8 @@ class InputFieldAccountWidget extends StatelessWidget {
   final bool editable;
   final IconData? icon;
 
+  final void Function(String) changedFunc;
+
   const InputFieldAccountWidget({
     super.key,
     required this.title,
@@ -15,14 +17,17 @@ class InputFieldAccountWidget extends StatelessWidget {
     required this.controller,
     this.editable = true,
     this.icon,
+    this.changedFunc = emptyFunc,
   });
+
+  static void emptyFunc(String) {}
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       enabled: editable,
-
+      onChanged: changedFunc,
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppPallette.borderColor2, width: 2.0),

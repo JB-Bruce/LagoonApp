@@ -14,6 +14,7 @@ class UserService {
       await FirebaseFirestore.instance.collection('users').doc(uid).set({
         'firstName': firstName,
       }, SetOptions(merge: true));
+      name = firstName;
     } catch (e) {
       log('Info : Firestore not connected');
     }

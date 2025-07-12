@@ -7,18 +7,20 @@ class ValidateButton extends StatelessWidget {
   final String text;
   final Function()? event;
   final IconData? icon;
+  final double additivePadding;
 
   const ValidateButton({
     super.key,
     required this.text,
     required this.event,
     this.icon,
+    this.additivePadding = 0,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: EdgeInsets.symmetric(horizontal: (25 + additivePadding)),
       child: InkWell(
         onTap: event,
         borderRadius: BorderRadius.circular(15),
