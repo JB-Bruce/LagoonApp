@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 30),
+            SizedBox(height: 20),
 
             ValidateButton(text: 'Connexion', event: login),
 
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            SizedBox(height: 40),
+            SizedBox(height: 20),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -136,7 +136,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 TextButton(
                   onPressed: ()=>{
-                    Navigator.pushNamed(context, '/signin')
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SigninPage()),
+                    ),
                   },
                   child: Text("Créer un compte",
                     style: TextStyle(

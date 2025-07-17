@@ -56,10 +56,6 @@ class MyApp extends StatelessWidget {
         },
       ),
       theme: ThemeData.dark(),
-      routes: {
-        '/signin': (context) => SigninPage(),
-        '/login': (context) => LoginPage(),
-      },
     );
   }
 }

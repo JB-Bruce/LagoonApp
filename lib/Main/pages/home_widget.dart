@@ -39,7 +39,7 @@ class HomeWidget extends StatelessWidget {
       return false;
 
     } catch (e) {
-      print("Erreur lors de la détection de l’émulateur : $e");
+      log("Erreur lors de la détection de l’émulateur : $e");
       return false;
     }
   }
@@ -67,6 +67,8 @@ class HomeWidget extends StatelessWidget {
           IconButton(
             onPressed: () async {
               if(await isPhone()){
+                openQRScan(context);
+                return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text("Scan de QR code indisponible")),
                 );

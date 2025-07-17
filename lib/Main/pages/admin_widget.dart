@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
 import 'package:lagoon_app/Main/pages/player_list_view.dart';
+import 'package:lagoon_app/Main/user_service.dart';
 
 class AdminWidget extends StatefulWidget {
   const AdminWidget({super.key});
@@ -18,6 +19,73 @@ class _AdminWidgetState extends State<AdminWidget> {
   final repetitionController = TextEditingController();
 
   bool isHovering = false;
+
+  Future<void> pickWinner(BuildContext context) async{
+
+    if(await userService.value.isParticipantsEmpty()){
+      await showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+          title: Text("Aucun participant"),
+          content: Text("Aucun participant disponible pour le tirage"),
+          actions: [
+            ElevatedButton(
+              child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+              onPressed: () => Navigator.pop(context),
+            )
+          ],
+        ),
+      );
+      return;
+    }
+    Map<String, dynamic>? winner = await userService.value.getRandomWinner();
+    String winnerName = winner?['name'] ?? 'ERROR_NAME';
+    String winnerEmail = winner?['email'] ?? 'ERROR_EMAIL';
+    String winnerUid = winner?['uid'] ?? 'ERROR_UID';
+    await showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Nouveau gagnant"),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text("Le gagant est : "),
+                Text(winnerName,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w800,
+                    color: AppPallette.gradiant2,
+                  ),
+                ),
+              ],
+            ),
+
+            Text(winnerEmail,
+              style: TextStyle(
+                color: AppPallette.textColor3,
+              ),
+            ),
+
+            Text('id : ' + winnerUid,
+              style: TextStyle(
+                color: AppPallette.borderColor3,
+                fontSize: 10,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          ElevatedButton(
+            child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+            onPressed: () => Navigator.pop(context),
+          )
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -239,7 +307,9 @@ class _AdminWidgetState extends State<AdminWidget> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 80),
             child: InkWell(
-              onTap: null,
+              onTap: () async {
+                await pickWinner(context);
+              },
               borderRadius: BorderRadius.circular(15),
               focusColor: AppPallette.gradiant2,
               child: Ink(

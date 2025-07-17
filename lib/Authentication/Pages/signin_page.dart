@@ -143,7 +143,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 TextButton(
                   onPressed: ()=>{
-                    Navigator.pushNamed(context, '/login')
+                    Navigator.pop(context),
                   },
                   child: Text("Se connecter",
                     style: TextStyle(
