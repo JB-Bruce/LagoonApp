@@ -16,12 +16,12 @@ class _LoadingPageState extends State<LoadingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPallette.backgroundColor,
+      backgroundColor: appColor.backgroundColor,
 
       body: SafeArea(
         child: Center(
           child: CircularProgressIndicator(
-            color: AppPallette.gradiant1,
+            color: appColor.gradiant1,
             strokeWidth: 5,
             strokeCap: StrokeCap.round,
           ),

@@ -36,7 +36,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
           content: Text("Vous êtes déjà inscrit au jeu."),
           actions: [
             ElevatedButton(
-              child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+              child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
               onPressed: () => Navigator.pop(context),
             )
           ],
@@ -54,12 +54,12 @@ class _QrScannerPageState extends State<QrScannerPage> {
         content: Text("Souhaitez-vous vous inscrire au jeu concours du Lagoon ?"),
         actions: [
           ElevatedButton(
-            child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+            child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
             onPressed: () => Navigator.pop(context, true),
           ),
           IconButton(
               onPressed: () => Navigator.pop(context, false),
-              icon: Icon(Icons.clear, color: AppPallette.errorColor2, size: 25,),
+              icon: Icon(Icons.clear, color: appColor.errorColor2, size: 25,),
           ),
         ],
       ),
@@ -85,13 +85,13 @@ class _QrScannerPageState extends State<QrScannerPage> {
                             decoration: InputDecoration(
                                 enabledBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: AppPallette.textColor2,
+                                    color: appColor.textColor2,
                                     width: .8,
                                   ),
                                 ),
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: AppPallette.gradiant1,
+                                    color: appColor.gradiant1,
                                     width: 1.5,
                                   ),
                                 ),
@@ -113,7 +113,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
                               children: [
                                 Text('4 caractères minimum',
                                   style: TextStyle(
-                                    color: AppPallette.errorColor2,
+                                    color: appColor.errorColor2,
                                   ),
                                   textAlign: TextAlign.start,
                                 ),
@@ -133,11 +133,11 @@ class _QrScannerPageState extends State<QrScannerPage> {
                           null;
                         }
                       },
-                      icon: Icon(Icons.check, color: nameController.text.trim().length >= 4 ? AppPallette.gradiant2 : AppPallette.borderColor2, size: 25,),
+                      icon: Icon(Icons.check, color: nameController.text.trim().length >= 4 ? appColor.gradiant2 : appColor.borderColor2, size: 25,),
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context, null),
-                      icon: Icon(Icons.clear, color: AppPallette.errorColor2, size: 25,),
+                      icon: Icon(Icons.clear, color: appColor.errorColor2, size: 25,),
                     ),
                   ],
                 );
@@ -159,19 +159,19 @@ class _QrScannerPageState extends State<QrScannerPage> {
         SnackBar(
           content: Row(
             children: [
-              Icon(Icons.check, color: AppPallette.textColor1, size: 20,),
+              Icon(Icons.check, color: appColor.textColor1, size: 20,),
 
               SizedBox(width: 20),
 
               Text("Inscription réussie",
                 style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                   fontWeight: FontWeight.w400,
                 ),
               ),
             ],
           ),
-          backgroundColor: AppPallette.gradiant3,
+          backgroundColor: appColor.gradiant3,
         ),
       );
     }

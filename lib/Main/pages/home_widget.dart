@@ -56,7 +56,7 @@ class HomeWidget extends StatelessWidget {
           Text(
             'Accueil',
             style: TextStyle(
-              color: AppPallette.textColor1,
+              color: appColor.textColor1,
               fontSize: 35,
               fontWeight: FontWeight.w800,
             ),

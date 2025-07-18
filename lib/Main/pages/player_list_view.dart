@@ -16,7 +16,7 @@ class PlayerListView extends StatelessWidget {
       content: Text("Attention, cette action est irréversible"),
       actions: [
         IconButton(
-          icon: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+          icon: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
           onPressed: () async {
             await userService.value.deleteAllParticipants();
 
@@ -24,19 +24,19 @@ class PlayerListView extends StatelessWidget {
               SnackBar(
                 content: Row(
                   children: [
-                    Icon(Icons.check, color: AppPallette.textColor1, size: 20,),
+                    Icon(Icons.check, color: appColor.textColor1, size: 20,),
 
                     SizedBox(width: 20),
 
                     Text("Suppression confirmée",
                       style: TextStyle(
-                        color: AppPallette.textColor1,
+                        color: appColor.textColor1,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                   ],
                 ),
-                backgroundColor: AppPallette.gradiant3,
+                backgroundColor: appColor.gradiant3,
               ),
             );
 
@@ -44,7 +44,7 @@ class PlayerListView extends StatelessWidget {
           },
         ),
         ElevatedButton(
-          child: Icon(Icons.clear, color: AppPallette.errorColor2, size: 25,),
+          child: Icon(Icons.clear, color: appColor.errorColor2, size: 25,),
           onPressed: () => Navigator.pop(context),
         ),
       ],
@@ -55,9 +55,9 @@ class PlayerListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPallette.backgroundColor,
+      backgroundColor: appColor.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppPallette.backgroundColor2,
+        backgroundColor: appColor.backgroundColor2,
         title: Text('Participants'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -85,7 +85,7 @@ class PlayerListView extends StatelessWidget {
               ListView.separated(
                 itemCount: participants.length,
                 separatorBuilder: (_, _) => Divider(
-                  color: AppPallette.borderColor2,
+                  color: appColor.borderColor2,
                   thickness: 1,
                   indent: 20,
                   endIndent: 20,
@@ -96,11 +96,11 @@ class PlayerListView extends StatelessWidget {
                     leading: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.person, color: AppPallette.gradiant2,size: 28,),
+                        Icon(Icons.person, color: appColor.gradiant2,size: 28,),
                         Text(DateFormat('HH:mm').format(data['timestamp'].toDate().toLocal())),
                         Text(DateFormat('dd/MM').format(data['timestamp'].toDate().toLocal()),
                           style: TextStyle(
-                              color: AppPallette.textColor3,
+                              color: appColor.textColor3,
                               fontSize: 8
                           ),
                         ),
@@ -108,7 +108,7 @@ class PlayerListView extends StatelessWidget {
                     ),
                     title: Text(data['name'] ?? 'Nom inconnu',
                       style: TextStyle(
-                        color: AppPallette.gradiant2,
+                        color: appColor.gradiant2,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -123,7 +123,7 @@ class PlayerListView extends StatelessWidget {
                             children: [
                               Text(participants[index].id,
                                 style: TextStyle(
-                                  color: AppPallette.borderColor2,
+                                  color: appColor.borderColor2,
                                   fontSize: 12
                                 ),
                               ),
@@ -142,13 +142,13 @@ class PlayerListView extends StatelessWidget {
                 right: 30,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor: WidgetStatePropertyAll(AppPallette.borderColor4),
+                    backgroundColor: WidgetStatePropertyAll(appColor.borderColor4),
                   ),
                   onPressed: () async {
                     await tryDeleteAllParticipants(context);
                   },
                   child: Icon(Icons.delete,
-                    color: AppPallette.errorColor2,
+                    color: appColor.errorColor2,
                   ),
                 ),
               ),

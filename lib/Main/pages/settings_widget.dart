@@ -1,19 +1,111 @@
 import 'package:flutter/material.dart';
+import 'package:lagoon_app/Main/Widgets/settings_subpage_button.dart';
+import 'package:lagoon_app/Main/app_pallette.dart';
+import 'package:lagoon_app/Main/user_service.dart';
 
 class SettingsWidget extends StatelessWidget {
   const SettingsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: [
+            const SizedBox(height: 70),
+      
+            Text(
+              'Paramètres',
+              style: TextStyle(
+                color: appColor.textColor1,
+                fontSize: 35,
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+      
+      
+      
+            const SizedBox(height: 140),
+      
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: InkWell(
+                onTap: null,
+                borderRadius: BorderRadius.circular(15),
+                focusColor: appColor.borderColor4,
+                child: Ink(
+                  padding: const EdgeInsets.all(10),
+                  //margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: appColor.backgroundColor2,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+      
+                        SettingsSubpageButton(text: 'Mentions légales', event: () {  }, icon: Icons.chevron_right,),
+      
+                        const SizedBox(height: 10),
+      
+                        SettingsSubpageButton(text: 'Conditions générales d’utilisation', event: () {  }, icon: Icons.chevron_right,),
+      
+                        const SizedBox(height: 10),
+      
+                        SettingsSubpageButton(text: 'Politique de confidentialité', event: () {  }, icon: Icons.chevron_right,),
+                        
+                        const SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
 
-      children: [
-        Text(
-          'Paramètres',
-          style: TextStyle(),
+
+            const SizedBox(height: 30),
+
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: InkWell(
+                onTap: null,
+                borderRadius: BorderRadius.circular(15),
+                focusColor: appColor.borderColor4,
+                child: Ink(
+                  padding: const EdgeInsets.all(10),
+                  //margin: const EdgeInsets.symmetric(horizontal: 25),
+                  decoration: BoxDecoration(
+                      color: appColor.backgroundColor2,
+                      borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 10),
+
+                        SettingsSubpageButton(text: 'Nous contacter', event: () {  }, icon: Icons.chevron_right,),
+
+                        const SizedBox(height: 10),
+
+                        SettingsSubpageButton(text: 'Reporter un bug', event: () {  }, icon: Icons.chevron_right,),
+
+                        const SizedBox(height: 10),
+
+                        SettingsSubpageButton(text: "version de l'app : v" + userService.value.version, event: null),
+
+                        const SizedBox(height: 10),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+      
+          ],
         ),
-      ],
-
+      ),
     );
   }
 }

@@ -8,7 +8,11 @@ ValueNotifier<UserService> userService = ValueNotifier(UserService());
 
 class UserService {
 
+  String version = '0.1.0';
+
   String? name = '';
+
+  bool isDarkTheme = false;
 
   Future<void> saveUserData(String uid, String firstName) async {
     try {

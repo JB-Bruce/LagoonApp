@@ -36,7 +36,7 @@ class _EmailSentPageState extends State<EmailSentPage> {
     }
 
     return Scaffold(
-      backgroundColor: AppPallette.backgroundColor,
+      backgroundColor: appColor.backgroundColor,
 
       body: SafeArea(
         child: Center(
@@ -46,7 +46,7 @@ class _EmailSentPageState extends State<EmailSentPage> {
               Text(
                 'Email envoyé !',
                 style: TextStyle(
-                  color: AppPallette.textColor1,
+                  color: appColor.textColor1,
                   fontWeight: FontWeight.w800,
                   fontSize: 30
                 ),
@@ -56,14 +56,14 @@ class _EmailSentPageState extends State<EmailSentPage> {
 
               Icon(Icons.check,
                 size: 70,
-                color: AppPallette.gradiant2,
+                color: appColor.gradiant2,
 
               ),
 
               SizedBox(height: 50),
 
               Divider(
-                color: AppPallette.borderColor2,
+                color: appColor.borderColor2,
                 thickness: 2,
                 indent: 40,
                 endIndent: 40,
@@ -77,7 +77,7 @@ class _EmailSentPageState extends State<EmailSentPage> {
                   'Un email de vérification vous à été envoyé à ${authService.value.currentUser?.email ?? '*email*'}. Terminez votre inscription en cliquant sur le lien reçu.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: AppPallette.textColor2,
+                    color: appColor.textColor2,
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
                   ),
@@ -87,7 +87,7 @@ class _EmailSentPageState extends State<EmailSentPage> {
               SizedBox(height: 50),
 
               Divider(
-                color: AppPallette.borderColor2,
+                color: appColor.borderColor2,
                 thickness: 2,
                 indent: 40,
                 endIndent: 40,

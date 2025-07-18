@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPallette.backgroundColor,
+      backgroundColor: appColor.backgroundColor,
 
       body: SafeArea(
         child: Center(
@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Lagoon',
               style: TextStyle(
-                color: AppPallette.textColor1,
+                color: appColor.textColor1,
                 fontSize: 30,
                 fontWeight: FontWeight.w900,
               ),
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'bar - restaurant',
               style: TextStyle(
-                color: AppPallette.textColor3,
+                color: appColor.textColor3,
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
               ),
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               'Connexion',
               style: TextStyle(
-                color: AppPallette.textColor1,
+                color: appColor.textColor1,
                 fontSize: 35,
                 fontWeight: FontWeight.w900,
                 fontFamily: ''
@@ -103,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: ()=>{},
                     child: Text('Mot de passe oublié ?',
                       style: TextStyle(
-                        color: AppPallette.textColor2,
+                        color: appColor.textColor2,
                       ),
                     ),
                   ),
@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
 
             Text(errorMsg,
               style: TextStyle(
-                color: AppPallette.errorColor,
+                color: appColor.errorColor,
               ),
             ),
 
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Text('Pas de compte ?' ,
                   style: TextStyle(
-                    color: AppPallette.textColor2,
+                    color: appColor.textColor2,
                   ),
                 ),
                 TextButton(
@@ -143,7 +143,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text("Créer un compte",
                     style: TextStyle(
-                      color: AppPallette.gradiant1,
+                      color: appColor.gradiant1,
                     ),
                   ),
                 ),

@@ -29,19 +29,19 @@ class _AccountPageState extends State<AccountPage> {
       SnackBar(
         content: Row(
           children: [
-            Icon(Icons.check, color: AppPallette.textColor1, size: 20,),
+            Icon(Icons.check, color: appColor.textColor1, size: 20,),
 
             SizedBox(width: 20),
 
             Text("Informations enregistrées",
               style: TextStyle(
-                color: AppPallette.textColor1,
+                color: appColor.textColor1,
                 fontWeight: FontWeight.w400,
               ),
             ),
           ],
         ),
-        backgroundColor: AppPallette.gradiant3,
+        backgroundColor: appColor.gradiant3,
       ),
     );
 
@@ -95,7 +95,7 @@ class _AccountPageState extends State<AccountPage> {
             Text(
               'Compte',
               style: TextStyle(
-                color: AppPallette.textColor1,
+                color: appColor.textColor1,
                 fontWeight: FontWeight.w800,
                 fontSize: 35
               ),
@@ -107,7 +107,7 @@ class _AccountPageState extends State<AccountPage> {
               children: [
                 Text('Informations personnelles',
                   style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                     fontWeight: FontWeight.w600,
                     fontSize: 20
                   ),
@@ -116,7 +116,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
       
             Divider(
-              color: AppPallette.borderColor4,
+              color: appColor.borderColor4,
               thickness: 2,
             ),
       
@@ -134,7 +134,7 @@ class _AccountPageState extends State<AccountPage> {
               children: [
                 Text('Mot de passe',
                   style: TextStyle(
-                      color: AppPallette.textColor1,
+                      color: appColor.textColor1,
                       fontWeight: FontWeight.w600,
                       fontSize: 20
                   ),
@@ -143,7 +143,7 @@ class _AccountPageState extends State<AccountPage> {
             ),
       
             Divider(
-              color: AppPallette.borderColor4,
+              color: appColor.borderColor4,
               thickness: 2,
             ),
       
@@ -174,12 +174,12 @@ class _AccountPageState extends State<AccountPage> {
               child: InkWell(
                 onTap: changed ? save : null,
                 borderRadius: BorderRadius.circular(15),
-                focusColor: AppPallette.gradiant2,
+                focusColor: appColor.gradiant2,
                 child: Ink(
                   padding: const EdgeInsets.all(12),
                   //margin: const EdgeInsets.symmetric(horizontal: 25),
                   decoration: BoxDecoration(
-                      color: changed ? AppPallette.gradiant1 : AppPallette.borderColor2,
+                      color: changed ? appColor.gradiant1 : appColor.borderColor2,
                       borderRadius: BorderRadius.circular(15)
                   ),
                   child: Center(
@@ -188,7 +188,7 @@ class _AccountPageState extends State<AccountPage> {
                         Center(
                           child: Text('Sauvegarder',
                             style: TextStyle(
-                              color: AppPallette.textColor1,
+                              color: appColor.textColor1,
                               fontWeight: FontWeight.w800,
                               fontSize: 15,
                             ),
@@ -208,7 +208,7 @@ class _AccountPageState extends State<AccountPage> {
               child: Text(
                 'Deconnexion',
                 style: TextStyle(
-                  color: AppPallette.errorColor2,
+                  color: appColor.errorColor2,
                 ),
               ),
             ),

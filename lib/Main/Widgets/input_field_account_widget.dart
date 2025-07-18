@@ -30,22 +30,22 @@ class InputFieldAccountWidget extends StatelessWidget {
       onChanged: changedFunc,
       decoration: InputDecoration(
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppPallette.borderColor2, width: 2.0),
+          borderSide: BorderSide(color: appColor.borderColor2, width: 2.0),
           borderRadius: BorderRadius.circular(15),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppPallette.borderColor, width: 2.0),
+          borderSide: BorderSide(color: appColor.borderColor, width: 2.0),
           borderRadius: BorderRadius.circular(15),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppPallette.gradiant1, width: 3.0),
+          borderSide: BorderSide(color: appColor.gradiant1, width: 3.0),
           borderRadius: BorderRadius.circular(20),
         ),
         hintStyle: TextStyle(
-          color: editable ? AppPallette.textColor3 : AppPallette.textColor3,
+          color: editable ? appColor.textColor3 : appColor.textColor3,
         ),
         labelStyle: TextStyle(
-          color: AppPallette.textColor2,
+          color: appColor.textColor2,
           fontSize: 20,
           fontWeight: FontWeight.w600,
         ),
@@ -54,8 +54,10 @@ class InputFieldAccountWidget extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.always,
         suffixIcon: editable ? Icon(Icons.edit_outlined) : null,
         prefixIcon: icon != null ? Icon(icon) : null,
-        prefixIconColor: AppPallette.textColor3,
+        prefixIconColor: appColor.textColor3,
+
       ),
+      style: TextStyle(color: appColor.textColor3),
     );
   }
 }

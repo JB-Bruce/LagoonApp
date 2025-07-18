@@ -67,16 +67,16 @@ class _HomePageState extends State<HomePage> {
             : [HomeWidget(), AccountPage(), SettingsWidget()];
 
         return Scaffold(
-          backgroundColor: AppPallette.backgroundColor,
+          backgroundColor: appColor.backgroundColor,
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentIndex,
             onTap: setIndex,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: AppPallette.gradiant2,
+            selectedItemColor: appColor.gradiant2,
             selectedIconTheme: IconThemeData(size: 28),
             selectedLabelStyle: TextStyle(fontWeight: FontWeight.w500),
-            unselectedItemColor: AppPallette.textColor3,
-            backgroundColor: AppPallette.backgroundColor2,
+            unselectedItemColor: appColor.textColor3,
+            backgroundColor: appColor.backgroundColor2,
 
             items: isAdminUser ?
             [

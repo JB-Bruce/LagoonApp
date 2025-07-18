@@ -30,7 +30,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           content: Text("Aucun participant disponible pour le tirage"),
           actions: [
             ElevatedButton(
-              child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+              child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
               onPressed: () => Navigator.pop(context),
             )
           ],
@@ -57,7 +57,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w800,
-                    color: AppPallette.gradiant2,
+                    color: appColor.gradiant2,
                   ),
                 ),
               ],
@@ -65,13 +65,13 @@ class _AdminWidgetState extends State<AdminWidget> {
 
             Text(winnerEmail,
               style: TextStyle(
-                color: AppPallette.textColor3,
+                color: appColor.textColor3,
               ),
             ),
 
             Text('id : ' + winnerUid,
               style: TextStyle(
-                color: AppPallette.borderColor3,
+                color: appColor.borderColor3,
                 fontSize: 10,
               ),
             ),
@@ -79,7 +79,7 @@ class _AdminWidgetState extends State<AdminWidget> {
         ),
         actions: [
           ElevatedButton(
-            child: Icon(Icons.check, color: AppPallette.gradiant2, size: 25,),
+            child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
             onPressed: () => Navigator.pop(context),
           )
         ],
@@ -96,7 +96,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           Text(
             'Accueil',
             style: TextStyle(
-              color: AppPallette.textColor1,
+              color: appColor.textColor1,
               fontSize: 35,
               fontWeight: FontWeight.w800,
             ),
@@ -105,7 +105,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           Text(
             'Admin',
             style: TextStyle(
-              color: AppPallette.textColor1,
+              color: appColor.textColor1,
               fontSize: 20,
               fontWeight: FontWeight.w300,
               fontStyle: FontStyle.italic,
@@ -115,7 +115,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           const SizedBox(height: 100),
 
           Divider(
-            color: AppPallette.borderColor2,
+            color: appColor.borderColor2,
             thickness: 1,
             indent: 40,
             endIndent: 40,
@@ -126,7 +126,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           Text(
             'Tirage au sort',
             style: TextStyle(
-              color: AppPallette.textColor1,
+              color: appColor.textColor1,
               fontSize: 25,
               fontWeight: FontWeight.w600,
             ),
@@ -142,7 +142,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                 Text(
                   'Durée : ',
                   style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                     fontSize: 16,
                   ),
                 ),
@@ -170,14 +170,14 @@ class _AdminWidgetState extends State<AdminWidget> {
                       isDense: true,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: AppPallette.borderColor,
+                          color: appColor.borderColor,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: AppPallette.gradiant1,
+                          color: appColor.gradiant1,
                           width: 3.0,
                         ),
                         borderRadius: BorderRadius.circular(13),
@@ -192,7 +192,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                 Text(
                   'mn',
                   style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                     fontSize: 16,
                   ),
                 ),
@@ -210,7 +210,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                 Text(
                   'répétitions : ',
                   style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                     fontSize: 16,
                   ),
                 ),
@@ -238,14 +238,14 @@ class _AdminWidgetState extends State<AdminWidget> {
                       isDense: true,
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: AppPallette.borderColor,
+                          color: appColor.borderColor,
                           width: 2.0,
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
-                          color: AppPallette.gradiant1,
+                          color: appColor.gradiant1,
                           width: 3.0,
                         ),
                         borderRadius: BorderRadius.circular(13),
@@ -260,7 +260,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                 Text(
                   'x',
                   style: TextStyle(
-                    color: AppPallette.textColor1,
+                    color: appColor.textColor1,
                     fontSize: 16,
                   ),
                 ),
@@ -275,12 +275,12 @@ class _AdminWidgetState extends State<AdminWidget> {
         child: InkWell(
           onTap: null,
           borderRadius: BorderRadius.circular(15),
-          focusColor: AppPallette.gradiant2,
+          focusColor: appColor.gradiant2,
           child: Ink(
             padding: const EdgeInsets.all(12),
             //margin: const EdgeInsets.symmetric(horizontal: 25),
             decoration: BoxDecoration(
-                color: AppPallette.gradiant1,
+                color: appColor.gradiant1,
                 borderRadius: BorderRadius.circular(15)
             ),
             child: Center(
@@ -289,7 +289,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                   Center(
                     child: Text('Lancer le tirage',
                       style: TextStyle(
-                        color: AppPallette.textColor1,
+                        color: appColor.textColor1,
                         fontWeight: FontWeight.w800,
                         fontSize: 15,
                       ),
@@ -311,12 +311,12 @@ class _AdminWidgetState extends State<AdminWidget> {
                 await pickWinner(context);
               },
               borderRadius: BorderRadius.circular(15),
-              focusColor: AppPallette.gradiant2,
+              focusColor: appColor.gradiant2,
               child: Ink(
                 padding: const EdgeInsets.all(10),
                 //margin: const EdgeInsets.symmetric(horizontal: 25),
                 decoration: BoxDecoration(
-                    color: AppPallette.gradiant3,
+                    color: appColor.gradiant3,
                     borderRadius: BorderRadius.circular(15)
                 ),
                 child: Center(
@@ -325,7 +325,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                       Center(
                         child: Text('Tirer un gagnant',
                           style: TextStyle(
-                            color: AppPallette.textColor1,
+                            color: appColor.textColor1,
                             fontWeight: FontWeight.w800,
                             fontSize: 15,
                           ),
@@ -347,23 +347,23 @@ class _AdminWidgetState extends State<AdminWidget> {
                 onHover: (bool) => log('eee'),
                 child: Text('Voir les inscrits',
                   style: TextStyle(
-                    color: AppPallette.gradiant1,
+                    color: appColor.gradiant1,
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                     decoration: TextDecoration.underline,
-                    decorationColor: AppPallette.gradiant1,
+                    decorationColor: appColor.gradiant1,
                   ),
                 ),
               ),
 
-              Icon(Icons.search, color: AppPallette.gradiant1, size: 20),
+              Icon(Icons.search, color: appColor.gradiant1, size: 20),
             ],
           ),
 
           const SizedBox(height: 10),
 
           Divider(
-            color: AppPallette.borderColor2,
+            color: appColor.borderColor2,
             thickness: 1,
             indent: 40,
             endIndent: 40,

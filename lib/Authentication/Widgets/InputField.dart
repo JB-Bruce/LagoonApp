@@ -27,14 +27,14 @@ class InputField extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder:  OutlineInputBorder(
             borderSide: BorderSide(
-              color: AppPallette.borderColor,
+              color: appColor.borderColor,
               width: 2.0,
             ),
             borderRadius: BorderRadius.circular(15)
           ),
           focusedBorder:  OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppPallette.gradiant1,
+                color: appColor.gradiant1,
                 width: 3.0,
               ),
               borderRadius: BorderRadius.circular(20)

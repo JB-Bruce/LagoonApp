@@ -24,12 +24,12 @@ class ValidateButton extends StatelessWidget {
       child: InkWell(
         onTap: event,
         borderRadius: BorderRadius.circular(15),
-        focusColor: AppPallette.gradiant2,
+        focusColor: appColor.gradiant2,
         child: Ink(
           padding: const EdgeInsets.all(15),
           //margin: const EdgeInsets.symmetric(horizontal: 25),
           decoration: BoxDecoration(
-            color: AppPallette.gradiant1,
+            color: appColor.gradiant1,
             borderRadius: BorderRadius.circular(15)
           ),
           child: Center(
@@ -40,7 +40,7 @@ class ValidateButton extends StatelessWidget {
                 Center(
                   child: Text(text,
                     style: TextStyle(
-                      color: AppPallette.textColor1,
+                      color: appColor.textColor1,
                       fontWeight: FontWeight.w800,
                       fontSize: 18,
                     ),

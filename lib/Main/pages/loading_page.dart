@@ -7,10 +7,10 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppPallette.backgroundColor,
+      backgroundColor: appColor.backgroundColor,
       body: Center(
         child: CircularProgressIndicator(
-          color: AppPallette.gradiant1,
+          color: appColor.gradiant1,
         ),
       ),
     );
