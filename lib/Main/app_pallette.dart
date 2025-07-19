@@ -28,6 +28,8 @@ class AppPallette {
   Color get textColor2 => _isDark ? Colors.grey[200]! : Colors.grey[800]!;
   Color get textColor3 => _isDark ? Colors.grey[400]! : Colors.grey[700]!;
 
+  Color get shadowColor1 => _isDark ? Colors.black87 : Colors.grey[500]!;
+
   Color get transparentColor => Colors.transparent;
 
   Color get errorColor => Colors.red[600]!;

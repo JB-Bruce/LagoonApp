@@ -10,6 +10,7 @@ import 'package:lagoon_app/Main/pages/account_widget.dart';
 import 'package:lagoon_app/Main/pages/admin_widget.dart';
 import 'package:lagoon_app/Main/pages/home_widget.dart';
 import 'package:lagoon_app/Main/pages/settings_widget.dart';
+import 'package:lagoon_app/Main/theme_notifier.dart';
 import 'package:lagoon_app/Main/user_service.dart';
 
 class HomePage extends StatefulWidget {
@@ -47,6 +48,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
+
     
     return FutureBuilder<bool>(
       future: isAdminFuture,
@@ -66,35 +69,40 @@ class _HomePageState extends State<HomePage> {
             ? [HomeWidget(), AdminWidget(), AccountPage(), SettingsWidget()]
             : [HomeWidget(), AccountPage(), SettingsWidget()];
 
-        return Scaffold(
-          backgroundColor: appColor.backgroundColor,
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: currentIndex,
-            onTap: setIndex,
-            type: BottomNavigationBarType.fixed,
-            selectedItemColor: appColor.gradiant2,
-            selectedIconTheme: IconThemeData(size: 28),
-            selectedLabelStyle: TextStyle(fontWeight: FontWeight.w500),
-            unselectedItemColor: appColor.textColor3,
-            backgroundColor: appColor.backgroundColor2,
+        return ValueListenableBuilder(
+          valueListenable: themeNotifier,
+          builder: (context, value, child) {
+            return Scaffold(
+              backgroundColor: appColor.backgroundColor,
+              bottomNavigationBar: BottomNavigationBar(
+                currentIndex: currentIndex,
+                onTap: setIndex,
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: appColor.gradiant2,
+                selectedIconTheme: IconThemeData(size: 28),
+                selectedLabelStyle: TextStyle(fontWeight: FontWeight.w500),
+                unselectedItemColor: appColor.textColor3,
+                backgroundColor: appColor.backgroundColor2,
 
-            items: isAdminUser ?
-            [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
-              BottomNavigationBarItem(icon: Icon(Icons.security), label: 'Admin'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Compte'),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
-            ] :
-            [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Compte'),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
-            ],
-          ),
+                items: isAdminUser ?
+                [
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
+                  BottomNavigationBarItem(icon: Icon(Icons.security), label: 'Admin'),
+                  BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Compte'),
+                  BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
+                ] :
+                [
+                  BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Accueil'),
+                  BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Compte'),
+                  BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Paramètres'),
+                ],
+              ),
 
-          body: SafeArea(
-            child: pages.elementAt(currentIndex),
-          ),
+              body: SafeArea(
+                child: pages.elementAt(currentIndex),
+              ),
+            );
+          }
         );
       },
     );

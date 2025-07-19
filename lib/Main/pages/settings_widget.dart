@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lagoon_app/Main/Widgets/selection_button.dart';
 import 'package:lagoon_app/Main/Widgets/settings_subpage_button.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
+import 'package:lagoon_app/Main/theme_notifier.dart';
 import 'package:lagoon_app/Main/user_service.dart';
 
-class SettingsWidget extends StatelessWidget {
+class SettingsWidget extends StatefulWidget {
   const SettingsWidget({super.key});
 
+  @override
+  State<SettingsWidget> createState() => _SettingsWidgetState();
+}
+
+class _SettingsWidgetState extends State<SettingsWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -13,7 +20,7 @@ class SettingsWidget extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 70),
-      
+
             Text(
               'Paramètres',
               style: TextStyle(
@@ -22,11 +29,41 @@ class SettingsWidget extends StatelessWidget {
                 fontWeight: FontWeight.w800,
               ),
             ),
-      
-      
-      
-            const SizedBox(height: 140),
-      
+
+
+
+            const SizedBox(height: 100),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 70),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SelectionButton(
+                    label: "Option A",
+                    elevated: !userService.value.isDarkTheme,
+                    icon: Icons.dark_mode,
+                    event: (){userService.value.isDarkTheme ? null : setState(() {
+                      themeNotifier.toggle();
+                    });},
+                  ),
+                  SizedBox(width: 20),
+                  SelectionButton(
+                    label: "Option B",
+                    elevated: userService.value.isDarkTheme,
+                    icon: Icons.light_mode,
+                    event: (){userService.value.isDarkTheme ? setState(() {
+                      themeNotifier.toggle();
+                    }) : null;},
+                  ),
+                ],
+              )
+            ),
+
+
+
+            const SizedBox(height: 20),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: InkWell(
@@ -44,17 +81,17 @@ class SettingsWidget extends StatelessWidget {
                     child: Column(
                       children: [
                         const SizedBox(height: 10),
-      
+
                         SettingsSubpageButton(text: 'Mentions légales', event: () {  }, icon: Icons.chevron_right,),
-      
+
                         const SizedBox(height: 10),
-      
+
                         SettingsSubpageButton(text: 'Conditions générales d’utilisation', event: () {  }, icon: Icons.chevron_right,),
-      
+
                         const SizedBox(height: 10),
-      
+
                         SettingsSubpageButton(text: 'Politique de confidentialité', event: () {  }, icon: Icons.chevron_right,),
-                        
+
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -102,7 +139,7 @@ class SettingsWidget extends StatelessWidget {
                 ),
               ),
             ),
-      
+
           ],
         ),
       ),

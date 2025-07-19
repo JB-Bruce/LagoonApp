@@ -8,6 +8,8 @@ import 'package:lagoon_app/Authentication/Pages/email_sent_page.dart';
 import 'package:lagoon_app/Authentication/Pages/loading_page.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/pages/home_page.dart';
+import 'package:lagoon_app/Main/theme_notifier.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_options.dart';
 
 import 'Authentication/Pages/login_page.dart';
@@ -19,6 +21,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  bool isDark = true;
+log('11');
+  themeNotifier = await ThemeNotifier.init();
+log('22');
+  //final isDark = prefs.getBool('isDarkTheme') ?? true;
+
+  //themeNotifier = ThemeNotifier(isDark);
+
   runApp(const MyApp());
 }
 
