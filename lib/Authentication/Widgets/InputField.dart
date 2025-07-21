@@ -22,6 +22,9 @@ class InputField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
+        style: TextStyle(
+          color: appColor.textColor3,
+        ),
         controller: controller,
         obscureText: obscureText,
         decoration: InputDecoration(
@@ -40,7 +43,10 @@ class InputField extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)
           ),
           hintText: hintText,
-          prefixIcon: Icon(icon),
+          hintStyle: TextStyle(
+            color: appColor.textColor3,
+          ),
+          prefixIcon: Icon(icon, color: appColor.textColor3,),
         ),
       ),
     );

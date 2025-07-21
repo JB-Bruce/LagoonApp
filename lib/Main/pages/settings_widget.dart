@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lagoon_app/Authentication/Pages/SettingsSubpages/cgu_page.dart';
+import 'package:lagoon_app/Authentication/Pages/SettingsSubpages/confidentialite_page.dart';
+import 'package:lagoon_app/Authentication/Pages/SettingsSubpages/mentions_legales_page.dart';
 import 'package:lagoon_app/Main/Widgets/selection_button.dart';
 import 'package:lagoon_app/Main/Widgets/settings_subpage_button.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
@@ -82,15 +85,34 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       children: [
                         const SizedBox(height: 10),
 
-                        SettingsSubpageButton(text: 'Mentions légales', event: () {  }, icon: Icons.chevron_right,),
+                        SettingsSubpageButton(
+                          text: 'Mentions légales',
+                          event: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => MentionsLegalesPage()
+                            ));},
+                          icon: Icons.chevron_right,),
 
                         const SizedBox(height: 10),
 
-                        SettingsSubpageButton(text: 'Conditions générales d’utilisation', event: () {  }, icon: Icons.chevron_right,),
+                        SettingsSubpageButton(
+                          text: 'Conditions générales d’utilisation',
+                          event: () {
+                            Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => CguPage()
+                          ));},
+                          icon: Icons.chevron_right,
+                        ),
 
                         const SizedBox(height: 10),
 
-                        SettingsSubpageButton(text: 'Politique de confidentialité', event: () {  }, icon: Icons.chevron_right,),
+                        SettingsSubpageButton(
+                          text: 'Politique de confidentialité',
+                          event: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => ConfidentialitePage()
+                            ));},
+                          icon: Icons.chevron_right,),
 
                         const SizedBox(height: 10),
                       ],

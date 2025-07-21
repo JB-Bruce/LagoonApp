@@ -12,8 +12,17 @@ class PlayerListView extends StatelessWidget {
     await showDialog(
     context: context,
     builder: (_) => AlertDialog(
-      title: Text("Supprimer les participants"),
-      content: Text("Attention, cette action est irréversible"),
+      backgroundColor: appColor.backgroundColor,
+      title: Text("Supprimer les participants",
+        style: TextStyle(
+          color: appColor.textColor1,
+        ),
+      ),
+      content: Text("Attention, cette action est irréversible",
+        style: TextStyle(
+          color: appColor.textColor2,
+        ),
+      ),
       actions: [
         IconButton(
           icon: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
@@ -44,6 +53,9 @@ class PlayerListView extends StatelessWidget {
           },
         ),
         ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: WidgetStatePropertyAll(appColor.backgroundColor2),
+          ),
           child: Icon(Icons.clear, color: appColor.errorColor2, size: 25,),
           onPressed: () => Navigator.pop(context),
         ),
@@ -58,9 +70,15 @@ class PlayerListView extends StatelessWidget {
       backgroundColor: appColor.backgroundColor,
       appBar: AppBar(
         backgroundColor: appColor.backgroundColor2,
-        title: Text('Participants'),
+        title: Text('Participants',
+          style: TextStyle(
+            color: appColor.textColor1,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
+          color: appColor.textColor2,
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -75,7 +93,13 @@ class PlayerListView extends StatelessWidget {
           }
 
           if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('Aucun participant pour le moment.'));
+            return Center(
+              child: Text('Aucun participant pour le moment.',
+                style: TextStyle(
+                  color: appColor.textColor2,
+                ),
+              ),
+            );
           }
 
           final participants = snapshot.data!.docs;
@@ -97,7 +121,11 @@ class PlayerListView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(Icons.person, color: appColor.gradiant2,size: 28,),
-                        Text(DateFormat('HH:mm').format(data['timestamp'].toDate().toLocal())),
+                        Text(DateFormat('HH:mm').format(data['timestamp'].toDate().toLocal()),
+                          style: TextStyle(
+                            color: appColor.textColor2,
+                          ),
+                        ),
                         Text(DateFormat('dd/MM').format(data['timestamp'].toDate().toLocal()),
                           style: TextStyle(
                               color: appColor.textColor3,
@@ -116,7 +144,11 @@ class PlayerListView extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text((data['email']) ?? 'Email non reconnu'),
+                              Text((data['email']) ?? 'Email non reconnu',
+                                style: TextStyle(
+                                  color: appColor.textColor2,
+                                ),
+                              ),
                             ],
                           ),
                           Row(

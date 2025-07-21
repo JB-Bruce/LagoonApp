@@ -24,12 +24,24 @@ class _AdminWidgetState extends State<AdminWidget> {
 
     if(await userService.value.isParticipantsEmpty()){
       await showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-          title: Text("Aucun participant"),
-          content: Text("Aucun participant disponible pour le tirage"),
+        context: context,
+        builder: (_) => AlertDialog(
+          backgroundColor: appColor.backgroundColor,
+          title: Text("Aucun participant",
+            style: TextStyle(
+              color: appColor.textColor1,
+            ),
+          ),
+          content: Text("Aucun participant disponible pour le tirage",
+            style: TextStyle(
+              color: appColor.textColor2,
+            ),
+          ),
           actions: [
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(appColor.backgroundColor2),
+              ),
               child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
               onPressed: () => Navigator.pop(context),
             )
@@ -45,14 +57,23 @@ class _AdminWidgetState extends State<AdminWidget> {
     await showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Nouveau gagnant"),
+        backgroundColor: appColor.backgroundColor,
+        title: Text("Nouveau gagnant",
+          style: TextStyle(
+            color: appColor.textColor1,
+          ),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                Text("Le gagant est : "),
+                Text("Le gagant est : ",
+                  style: TextStyle(
+                    color: appColor.textColor2,
+                  ),
+                ),
                 Text(winnerName,
                   style: TextStyle(
                     fontSize: 15,
@@ -79,6 +100,9 @@ class _AdminWidgetState extends State<AdminWidget> {
         ),
         actions: [
           ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(appColor.backgroundColor2),
+            ),
             child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
             onPressed: () => Navigator.pop(context),
           )
@@ -157,7 +181,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: appColor.textColor3,
                     ),
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
@@ -183,6 +207,9 @@ class _AdminWidgetState extends State<AdminWidget> {
                         borderRadius: BorderRadius.circular(13),
                       ),
                       hintText: '000',
+                      hintStyle: TextStyle(
+                        color: appColor.borderColor4,
+                      ),
                     ),
                   ),
                 ),
@@ -225,7 +252,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: appColor.textColor3,
                     ),
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
@@ -251,6 +278,9 @@ class _AdminWidgetState extends State<AdminWidget> {
                         borderRadius: BorderRadius.circular(13),
                       ),
                       hintText: '00',
+                      hintStyle: TextStyle(
+                        color: appColor.borderColor4,
+                      ),
                     ),
                   ),
                 ),

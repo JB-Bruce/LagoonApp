@@ -21,13 +21,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  bool isDark = true;
-log('11');
-  themeNotifier = await ThemeNotifier.init();
-log('22');
-  //final isDark = prefs.getBool('isDarkTheme') ?? true;
 
-  //themeNotifier = ThemeNotifier(isDark);
+  themeNotifier = await ThemeNotifier.init();
 
   runApp(const MyApp());
 }

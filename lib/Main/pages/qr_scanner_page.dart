@@ -32,10 +32,22 @@ class _QrScannerPageState extends State<QrScannerPage> {
       await showDialog(
         context: context,
         builder: (_) => AlertDialog(
-          title: Text("Déjà inscrit"),
-          content: Text("Vous êtes déjà inscrit au jeu."),
+          backgroundColor: appColor.backgroundColor,
+          title: Text("Déjà inscrit",
+            style: TextStyle(
+              color: appColor.textColor1,
+            ),
+          ),
+          content: Text("Vous êtes déjà inscrit au jeu.",
+            style: TextStyle(
+              color: appColor.textColor2,
+            ),
+          ),
           actions: [
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(appColor.backgroundColor2),
+              ),
               child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
               onPressed: () => Navigator.pop(context),
             )
@@ -50,10 +62,22 @@ class _QrScannerPageState extends State<QrScannerPage> {
     final confirm = await showDialog<bool>(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Confirmation"),
-        content: Text("Souhaitez-vous vous inscrire au jeu concours du Lagoon ?"),
+        backgroundColor: appColor.backgroundColor,
+        title: Text("Confirmation",
+          style: TextStyle(
+            color: appColor.textColor1,
+          ),
+        ),
+        content: Text("Souhaitez-vous vous inscrire au jeu concours du Lagoon ?",
+          style: TextStyle(
+            color: appColor.textColor2,
+          ),
+        ),
         actions: [
           ElevatedButton(
+            style: ButtonStyle(
+              backgroundColor: WidgetStatePropertyAll(appColor.backgroundColor2),
+            ),
             child: Icon(Icons.check, color: appColor.gradiant2, size: 25,),
             onPressed: () => Navigator.pop(context, true),
           ),
@@ -74,28 +98,40 @@ class _QrScannerPageState extends State<QrScannerPage> {
             return StatefulBuilder(
               builder: (context, setState) {
                 return AlertDialog(
-                  title: Text("Entrez votre nom"),
+                  backgroundColor: appColor.backgroundColor,
+                  title: Text("Entrez votre nom",
+                    style: TextStyle(
+                      color: appColor.textColor1,
+                    ),
+                  ),
                   content: ConstrainedBox(
                     constraints: BoxConstraints(maxHeight: 150),
                     child: IntrinsicHeight(
                       child: Column(
                         children: [
                           TextField(
+                            style: TextStyle(
+                              color: appColor.textColor2,
+                            ),
                             controller: nameController,
                             decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: appColor.textColor2,
-                                    width: .8,
-                                  ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: appColor.textColor2,
+                                  width: .8,
                                 ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: appColor.gradiant1,
-                                    width: 1.5,
-                                  ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: appColor.gradiant1,
+                                  width: 1.5,
                                 ),
-                                hintText: "Nom ou pseudo"),
+                              ),
+                              hintText: "Nom ou pseudo",
+                              hintStyle: TextStyle(
+                                color: appColor.textColor3,
+                              ),
+                            ),
                             onChanged: (_) =>
                                 setState(() {}),
                           ),
@@ -124,7 +160,10 @@ class _QrScannerPageState extends State<QrScannerPage> {
                     ),
                   ),
                   actions: [
-                    IconButton(
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStatePropertyAll((nameController.text.trim().length >= 4 ? appColor.backgroundColor2 : appColor.backgroundColor)),
+                      ),
                       onPressed: () {
                         final name = nameController.text.trim();
                         if (name.length >= 4) {
@@ -133,7 +172,7 @@ class _QrScannerPageState extends State<QrScannerPage> {
                           null;
                         }
                       },
-                      icon: Icon(Icons.check, color: nameController.text.trim().length >= 4 ? appColor.gradiant2 : appColor.borderColor2, size: 25,),
+                      child: Icon(Icons.check, color: nameController.text.trim().length >= 4 ? appColor.gradiant2 : appColor.borderColor2, size: 25,),
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context, null),
@@ -182,7 +221,20 @@ class _QrScannerPageState extends State<QrScannerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Scanner un QR Code')),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: appColor.textColor1,
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Participer au tirage',
+          style: TextStyle(
+            color: appColor.textColor1,
+          ),
+        ),
+        backgroundColor: appColor.backgroundColor,
+      ),
       body: Stack(
         children: [
           MobileScanner(

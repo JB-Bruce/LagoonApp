@@ -35,7 +35,7 @@ class ValidateButton extends StatelessWidget {
           child: Center(
             child: Stack(
               children: [
-                if(icon != null) Row(children: [Icon(icon!),],),
+                if(icon != null) Row(children: [Icon(icon!, color: appColor.textColor1,),],),
 
                 Center(
                   child: Text(text,

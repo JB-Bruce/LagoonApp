@@ -62,11 +62,11 @@ class HomeWidget extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 70),
+          const SizedBox(height: 10),
 
           IconButton(
             onPressed: () async {
-              if(await isPhone()){
+              if(!await isPhone()){
                 openQRScan(context);
                 return;
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -79,6 +79,7 @@ class HomeWidget extends StatelessWidget {
 
             icon: Icon(Icons.qr_code_rounded,
               size: 45,
+              color: appColor.textColor2,
             ),
           ),
 
