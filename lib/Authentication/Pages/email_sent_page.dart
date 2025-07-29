@@ -6,6 +6,7 @@ import 'package:lagoon_app/Authentication/Widgets/validate_button.dart';
 import 'package:lagoon_app/Authentication/auth_service.dart';
 import 'package:lagoon_app/Main/app_pallette.dart';
 import 'package:lagoon_app/Main/pages/home_page.dart';
+import 'package:lagoon_app/Main/user_service.dart';
 
 class EmailSentPage extends StatefulWidget {
   const EmailSentPage({super.key});
@@ -93,7 +94,52 @@ class _EmailSentPageState extends State<EmailSentPage> {
                 endIndent: 40,
               ),
 
-              SizedBox(height: 100),
+              SizedBox(height: 50),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 0.0,
+                children: [
+                  Text('Aucun email reçu ?' ,
+                    style: TextStyle(
+                      color: appColor.textColor2,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () async {
+                      if(authService.value.currentUser != null){
+                        await authService.value.sendEmail();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Row(
+                              children: [
+                                Icon(Icons.check, color: appColor.textColor1, size: 20,),
+
+                                SizedBox(width: 20),
+
+                                Text("Email envoyé",
+                                  style: TextStyle(
+                                    color: appColor.textColor1,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            backgroundColor: appColor.gradiant3,
+                          ),
+                        );
+                      }
+                    },
+                    child: Text("Renvoyer l'email",
+                      style: TextStyle(
+                        color: appColor.gradiant1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 20),
 
               ValidateButton(text: 'Retour', event: back, icon: Icons.arrow_back)
             ],
